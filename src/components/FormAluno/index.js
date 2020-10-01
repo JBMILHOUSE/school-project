@@ -58,7 +58,7 @@ export default class FormAluno extends Component {
                          placeholder="Código do curso do aluno"
                          className="form-input"
                          onChange={this.handleMundancaInput.bind(this)} />  
-
+                  
                    <button className="btnInserir">Inserir</button>           
               </form>
           </div>

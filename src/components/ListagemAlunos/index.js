@@ -6,9 +6,25 @@ export default class ListagemAlunos extends Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            dadosAlunos: []
+        };
+    }
+
+    componentDidMount() {
+        const apiUrl = 'http://localhost:5000/api/aluno';
+
+        fetch(apiUrl)
+           .then(res => res.json())
+           .then((result) => { this.setState({ dadosAlunos: result});
+           console.log("buscarAlunos: " + result);},
+           (error) => { this.state({ error });})
     }
     
     render() {
+
+        const { dadosAlunos } = this.state;
         return (
            <div className="listagem">
                <h1 className="tituloListagem">Listagem de Alunos</h1>
@@ -21,7 +37,7 @@ export default class ListagemAlunos extends Component {
                       </tr> 
                     </thead>
 
-                     {this.props.alunos.map((aluno) => <LinhaAluno ra={aluno.ra} nome={aluno.nome} codCurso={aluno.codCurso}/> )}
+                     {dadosAlunos.map((aluno) => <LinhaAluno ra={aluno.ra} nome={aluno.nome} codCurso={aluno.codCurso}/> )}
                 </table>
             </div>
         )

@@ -8,11 +8,11 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.alunos = [
+    /*this.alunos = [
        { 'ra': 20189, 'nome': 'André', 'codCurso': 19},
        { 'ra': 20351, 'nome': 'Amanda', 'codCurso': 28 }, 
        { 'ra': 20302, 'nome': 'Pedro', 'codCurso': 59 },
-     ];
+     ];*/
  
       this.novoAluno = [];
       this.state = {};
