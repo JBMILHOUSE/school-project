@@ -4,7 +4,7 @@ import './style.css';
 
 const apiUrl = 'http://localhost:5000/api/aluno';
 const stateInicial = {
-    aluno: { ra: '', nome: '', codCurso: 0},
+    aluno: { ra: '', nome: '', codCurso: 0 },
     dadosAlunos: []
 }
 export default class CadastroAluno extends Component {
@@ -17,7 +17,8 @@ export default class CadastroAluno extends Component {
           .then((result) => { this.setState({ dadosAlunos: result });
           console.log("Função didMount: " + result);
         },
-         (error) => { this.setState({ error }); 
+         (error) => { 
+           this.setState({ error }); 
           }
         )
   }
@@ -107,7 +108,7 @@ export default class CadastroAluno extends Component {
   renderTable() {
     return(
       <div className="listagem">
-        <table className="listaAluno" id="tbListaAlunos">
+        <table className="listaAlunos" id="tblListaAlunos">
           <thead>
              <tr className="cabecTabela">
                <th className="tabTituloRa">Ra</th>
@@ -126,7 +127,7 @@ export default class CadastroAluno extends Component {
                    <td>{aluno.codCurso}</td>
                    <td>
                      <button onClick={() => this.carregar(aluno)}>
-                       Alerta
+                       Altera
                       </button>
                    </td>
                    <td>

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import Logo from '../../assets/imagens/logo_escola.png';
 import './style.css';
 
@@ -6,21 +8,21 @@ export default class Menu extends Component {
     render() {
         return (
           <nav className="fundo">
-            <a href= "/">
-           <img className="Logo" src={Logo} alt="Logo escola"/> 
-           </a> 
+             <Link to= "/">
+              <img className="Logo" src={Logo} alt="Logo escola"/> 
+             </Link> 
 
-             <a className="itemMenu" href="/">
+             <Link className="itemMenu" to="/carometro">
                Carômetro
-             </a>
+             </Link>
 
-             <a className="itemMenu" href="/">
+             <Link className="itemMenu" to="/cadastrocurso">
                 Curso
-             </a>
+             </Link>
 
-            <a className="itemMenu" href="/">
+             <Link className="itemMenu" to="/">
               Alunos    
-            </a>
+             </Link>
          </nav>
         )
     }
