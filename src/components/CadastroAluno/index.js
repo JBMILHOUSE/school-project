@@ -3,24 +3,37 @@ import React, { Component } from 'react';
 import './style.css';
 
 const apiUrl = 'http://localhost:5000/api/aluno';
+const apiCurso = 'http://localhost:5000/api/curso';
 const stateInicial = {
     aluno: { ra: '', nome: '', codCurso: 0 },
-    dadosAlunos: []
+    curso: { codCurso: 0, nomeCurso: '', periodo: ''},
+    dadosAlunos: [],
+    dadosCursos: []
 }
+
 export default class CadastroAluno extends Component {
 
   state = { ...stateInicial };
 
   componentDidMount() {
     fetch(apiUrl)
-          .then(res => res.json())
-          .then((result) => { this.setState({ dadosAlunos: result });
+        .then(res => res.json())
+        .then((result) => { this.setState({ dadosAlunos: result });
           console.log("Função didMount: " + result);
         },
          (error) => { 
            this.setState({ error }); 
           }
         )
+    fetch(apiCurso)
+      .then(res => res.json())
+      .then((result) => { this.setState({ dadosCursos: result });
+        console.log("Funcção didMount curso: " + result);
+      },
+      (error) => {
+         this.setState({ error });
+       }
+      )
   }
 
   limpar() {
@@ -88,8 +101,18 @@ export default class CadastroAluno extends Component {
                onChange={ e => this.atualizaCampo(e)}
             /> 
 
-            <label>Código do curso:</label>
-            <input 
+            <label>Curso:</label>
+            <select>
+              {this.state.dadosCursos.map(
+                (curso) =>
+                 <option key={curso.id} value={curso.codCurso}>
+                  {curso.nomeCurso}
+                 </option>
+                )
+              }
+            </select>
+            
+            {/*<input 
                type="number"
                id= "codCurso"
                placeholder="0"
@@ -97,7 +120,7 @@ export default class CadastroAluno extends Component {
                name="codCurso"
                value={this.state.aluno.codCurso}
                onChange={ e => this.atualizaCampo(e)}
-            />  
+            /> */} 
 
             <button className="btnSalvar" onClick={e => this.salvar(e)} >Salvar</button>
             <button className="btnCancelar" onClick={e => this.limpar(e)} >Cancelar</button> 
