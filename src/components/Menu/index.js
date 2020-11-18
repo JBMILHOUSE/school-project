@@ -8,6 +8,7 @@ export default class Menu extends Component {
     render() {
         return (
           <nav className="fundo">
+             
              <Link to= "/">
               <img className="Logo" src={Logo} alt="Logo escola"/> 
              </Link> 
@@ -22,6 +23,9 @@ export default class Menu extends Component {
 
              <Link className="itemMenu" to="/">
               Alunos    
+             </Link>
+             <Link className="itemMenu" to="/sobre">
+               Sobre
              </Link>
          </nav>
         )

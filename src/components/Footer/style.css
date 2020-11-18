@@ -1,9 +1,9 @@
 footer {
     background-color: #BDBBBB;
-    height: 83px;
+    height: 95px;
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding: 20px;
     align-items: center;
     margin: 200px 0 auto;
     right: 0;
